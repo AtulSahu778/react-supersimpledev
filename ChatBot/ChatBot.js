@@ -31,7 +31,7 @@ function ChatInput({ chatMessages, setChatMessages }) {
     setChatMessages([
     ...newChatMessages,
     {
-      message: '...',
+      message: <img className="loading-img" src="https://supersimple.dev/images/loading-spinner.gif" />,
       sender: 'robot',
       id: 'temp-loading'
     }
@@ -75,7 +75,10 @@ function ChatInput({ chatMessages, setChatMessages }) {
   }
 
   return (
+
+    
     <div className="chat-input-container">
+      
       <input
         placeholder="Send a message to Chat Bot "
         size={30}
@@ -165,33 +168,17 @@ function ChatMessages({ chatMessages }) {
 }
 
 function App() {
-  const [chatMessages, setChatMessages] = React.useState([
-    {
-      message: 'hello chatbot',
-      sender: 'user',
-      id: 1
-    },
-    {
-      message: 'Hello! How can i help you?',
-      sender: 'robot',
-      id: 2
-    },
-    {
-      message: `Can you get me today's date?`,
-      sender: 'user',
-      id: 3
-    },
-    {
-      message: `Today is 19 November`,
-      sender: 'robot',
-      id: 4
-    }
-  ]);
+  const [chatMessages, setChatMessages] = React.useState([]);
 
   return (
     <div className="app-container">
-      
-      <ChatMessages chatMessages={chatMessages} />
+      {chatMessages.length === 0 && (
+        <p className="emptyChat">Welcome to the chatbot project! Send a message using the textbox above.</p>
+      )}
+      <ChatMessages 
+        chatMessages={chatMessages} 
+      />
+
       <ChatInput
         chatMessages={chatMessages}
         setChatMessages={setChatMessages}

@@ -1,0 +1,20 @@
+.button-on{
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: medium;
+    background-color: rgb(25, 135, 84);
+    height: 55px;
+    width: 65px;
+}
+
+.button-off{
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: medium;
+    background-color: rgb(192, 11, 11);
+    height: 55px;
+    width: 65px;
+
+}
