@@ -140,18 +140,25 @@ function ChatMessage({ message, sender }) {
   );
 }
 
+
+
+
 function ChatMessages({ chatMessages }) {
   // const [chatMessages, setChatMessages] = array; // this is called array destructuring.
 
   // const chatMessages = array[0]; // currrent data
   // const setChatMessages = array[1]; // updater function which updates the current data by making a copy of that
+  function useAutoScroll(dependencies){
   const chatMessagesRef = React.useRef(null);
   React.useEffect(() => {
     const containerElem = chatMessagesRef.current;
     if(containerElem){
       containerElem.scrollTop = containerElem.scrollHeight;
     }
-  }, [chatMessages])
+  }, [dependencies]);
+  return chatMessagesRef;
+}
+  const chatMessagesRef = useAutoScroll(chatMessages);
   return (
     <div className="chat-messages-container" ref={chatMessagesRef}>
       {chatMessages.map((chatMessage) => {
