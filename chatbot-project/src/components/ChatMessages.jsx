@@ -2,7 +2,9 @@ import { useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 
 function useAutoScroll(dependencies) {
+  
   const chatMessagesRef = useRef(null);
+
   useEffect(() => {
     const containerElem = chatMessagesRef.current;
     if (containerElem) {
@@ -22,6 +24,7 @@ function ChatMessages({ chatMessages }) {
           message={chatMessage.message}
           sender={chatMessage.sender}
           key={chatMessage.id}
+          timestamp={chatMessage.timestamp}
         />
       ))}
     </div>

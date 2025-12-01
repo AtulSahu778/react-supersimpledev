@@ -1,6 +1,6 @@
 
 .send-button {
-    background-color: rgb(25, 135, 84);
+    background-color: rgb(25, 155, 226);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -8,6 +8,19 @@
     border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.clear-button {
+    background-color: rgb(247, 247, 247);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 5px;
     margin-bottom: 40px;
 }
 
@@ -64,6 +77,8 @@
 .chat-message-profile{
     width: 45px;
     height: 45px;
+    border-radius: 45px;
+    object-fit: cover;
 }
 
 .chat-messages-container {
@@ -84,3 +99,11 @@
     height: 40px;
     margin: -15px;
 }
+
+.chat-message-time {
+  font-size: 11px;
+  color: #000000;
+  text-align: right;
+  margin-top: 4px;
+}
+

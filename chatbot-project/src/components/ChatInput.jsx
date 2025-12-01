@@ -1,7 +1,8 @@
 import { useState } from "react";
+import dayjs from "dayjs";
 
 function ChatInput({ chatMessages, setChatMessages }) {
-  const [isLoading, setIsLoading] = useState(false);  // Fixed: camelCase
+  const [isLoading, setIsLoading] = useState(false); 
   const [inputText, setInputText] = useState('');
 
   function saveInputText(event) {
@@ -11,29 +12,31 @@ function ChatInput({ chatMessages, setChatMessages }) {
   async function sendMessage() {
     if (!inputText.trim() || isLoading) return;
     
-    setIsLoading(true);  // Fixed: camelCase
+    setIsLoading(true);  
     const inputCopy = inputText;
     setInputText('');
 
-    // Add user message FIRST (optimistic update)
+    
     const newChatMessages = [
       ...chatMessages,
       {
         message: inputCopy,
         sender: 'user',
-        id: crypto.randomUUID()
+        id: crypto.randomUUID(),
+        timestamp: dayjs().valueOf()  
       }
     ];
     setChatMessages(newChatMessages);
 
-    // Add loading message
-    const loadingId = 'temp-loading-' + Date.now();  // Unique loading ID
+    
+    const loadingId = 'temp-loading-' + Date.now();  
     setChatMessages([
       ...newChatMessages,
       {
         message: <img className="loading-img" src="https://supersimple.dev/images/loading-spinner.gif" />,
         sender: 'robot',
-        id: loadingId
+        id: loadingId,
+        timestamp: dayjs().valueOf()
       }
     ]);
 
@@ -46,7 +49,8 @@ function ChatInput({ chatMessages, setChatMessages }) {
         {
           message: response,
           sender: 'robot',
-          id: crypto.randomUUID()
+          id: crypto.randomUUID(),
+          timestamp: dayjs().valueOf()
         }
       ]);
     } catch (error) {
@@ -55,12 +59,19 @@ function ChatInput({ chatMessages, setChatMessages }) {
         {
           message: 'Error: Could not get response',
           sender: 'robot',
-          id: crypto.randomUUID()
+          id: crypto.randomUUID(),
+          timestamp: dayjs().valueOf()
         }
       ]);
     } finally {
       setIsLoading(false);
     }
+  }
+
+  function clearMessage(){
+
+    setChatMessages([]);
+
   }
 
   function handleKeyEnter(event) {
@@ -88,6 +99,11 @@ function ChatInput({ chatMessages, setChatMessages }) {
       >
         {isLoading ? 'Sending...' : 'Send'}
       </button>
+      <button
+      className="clear-button"
+      onClick={clearMessage}
+      >
+        Clear</button>
     </div>
   );
 }

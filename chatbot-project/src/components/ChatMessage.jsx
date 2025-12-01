@@ -1,4 +1,11 @@
-function ChatMessage({ message, sender }) {
+import dayjs from "dayjs";
+import robotIcon from '../assets/chat-bot.gif';
+import userIcon from '../assets/avatar-atul.png';
+
+function ChatMessage({ message, sender, timestamp }) {
+  
+  const finalTime = timestamp ? dayjs(timestamp).format('h:mma') : '';
+
   return (
     <div className={
       sender === 'user' 
@@ -8,16 +15,23 @@ function ChatMessage({ message, sender }) {
       {sender === 'robot' && (
         <img 
           className="chat-message-profile"
-          src="https://supersimple.dev/projects/chatbot/robot.png"
+          src={robotIcon}
+          alt="robot"
         />
       )}
       <div className="chat-message-text">
         {message}
+        {timestamp && (
+          <div className="chat-message-time">
+            {finalTime}
+          </div>
+        )}
       </div>
       {sender === 'user' && (
         <img 
           className="chat-message-profile"
-          src="https://supersimple.dev/projects/chatbot/user.png"
+          src={userIcon}
+          alt="user"
         />
       )}
     </div>
