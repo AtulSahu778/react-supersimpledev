@@ -2,53 +2,66 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
-  background-color: white;
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: var(--bg-app);
 }
 
 .not-found-content {
   text-align: center;
   max-width: 500px;
-  padding: 20px;
+  padding: 48px 32px;
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
 }
 
 .error-code {
-  font-size: 120px;
-  font-weight: bold;
+  font-size: 140px;
+  font-weight: 800;
   margin: 0;
-  color: rgb(25, 155, 226);
+  background: linear-gradient(135deg, var(--primary), #007AFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
+  letter-spacing: -4px;
 }
 
 .error-heading {
-  font-size: 28px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  color: #333;
+  font-size: 32px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .error-text {
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 30px;
-  line-height: 1.5;
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.6;
 }
 
 .home-button {
-  background-color: rgb(25, 155, 226);
+  background: linear-gradient(135deg, var(--primary), #007AFF);
   color: white;
   border: none;
-  padding: 12px 30px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 25px; 
+  padding: 16px 40px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: var(--radius-button);
   cursor: pointer;
-  transition: background-color 0.2s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(25, 155, 226, 0.25);
 }
 
 .home-button:hover {
-  background-color: rgb(20, 130, 200); 
-  transform: translateY(-2px); 
+  background: linear-gradient(135deg, var(--primary-hover), #0066DD);
+  box-shadow: 0 6px 16px rgba(25, 155, 226, 0.35);
+  transform: translateY(-2px);
+}
+
+.home-button:active {
+  transform: scale(0.96);
 }

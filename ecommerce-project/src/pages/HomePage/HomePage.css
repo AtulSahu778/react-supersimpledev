@@ -1,129 +1,109 @@
 .home-page {
-  margin-top: 60px;
+  margin-top: 90px;
+  padding: 20px;
+  min-height: 100vh;
 }
 
 .home-page .products-grid {
   display: grid;
-
-  /* - In CSS Grid, 1fr means a column will take up the
-       remaining space in the grid.
-     - If we write 1fr 1fr ... 1fr; 8 times, this will
-       divide the grid into 8 columns, each taking up an
-       equal amount of the space.
-     - repeat(8, 1fr); is a shortcut for repeating "1fr"
-       8 times (instead of typing out "1fr" 8 times).
-       repeat(...) is a special property that works with
-       display: grid; */
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* @media is used to create responsive design (making the
-   website look good on any screen size). This @media
-   means when the screen width is 2000px or less, we
-   will divide the grid into 7 columns instead of 8. */
-@media (max-width: 2000px) {
+@media (max-width: 768px) {
   .home-page .products-grid {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  
+  .home-page {
+    padding: 16px;
   }
 }
 
-/* This @media means when the screen width is 1600px or
-   less, we will divide the grid into 6 columns. */
-@media (max-width: 1600px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (max-width: 1300px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 1000px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 575px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 450px) {
+@media (max-width: 480px) {
   .home-page .products-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .home-page .product-container {
-  padding-top: 40px;
-  padding-bottom: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
-
-  border-right: 1px solid rgb(240, 240, 240);
-  border-bottom: 1px solid rgb(240, 240, 240);
-
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.home-page .product-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
 }
 
 .home-page .product-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  height: 180px;
-  margin-bottom: 20px;
+  height: 200px;
+  margin-bottom: 16px;
+  background: var(--bg-app);
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .home-page .product-image {
-  /* Images overflow the container by default. To prevent this, set
-     max-width and max-height to 100% to stay inside container. */
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 5px;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }
 
 .home-page .product-name {
-  height: 40px;
-  margin-bottom: 5px;
+  height: 44px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
 }
 
 .home-page .product-rating-container {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .home-page .product-rating-stars {
-  width: 100px;
-  margin-right: 6px;
+  width: 90px;
+  margin-right: 8px;
 }
 
 .home-page .product-rating-count {
-  color: rgb(25, 135, 84);
+  color: var(--text-secondary);
   cursor: auto;
-  margin-top: 3px;
+  font-size: 14px;
 }
 
 .home-page .product-price {
   font-weight: 700;
-  margin-bottom: 10px;
+  font-size: 20px;
+  color: var(--primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
 }
 
 .home-page .product-quantity-container {
-  margin-bottom: 17px;
+  margin-bottom: 16px;
+}
+
+.home-page .product-quantity-container select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
 }
 
 .home-page .product-spacer {
@@ -131,27 +111,28 @@
 }
 
 .home-page .added-to-cart {
-  color: rgb(25, 135, 84);
-  font-size: 16px;
-
+  color: var(--success);
+  font-size: 15px;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
-
-  /* At first, the "Added to cart" message will
-     be invisible. Use JavaScript to change the
-     opacity and make it visible. */
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: rgba(52, 199, 89, 0.1);
+  border-radius: 12px;
   opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .home-page .added-to-cart img {
-  height: 19px;
+  height: 18px;
   margin-right: 6px;
 }
 
 .home-page .add-to-cart-button {
   width: 100%;
-  padding: 8px;
-  height: 34px;
-  margin-top: 1px;
+  padding: 12px;
+  height: 48px;
+  font-size: 16px;
 }

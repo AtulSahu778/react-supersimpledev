@@ -11,7 +11,7 @@ function Header() {
           <img className="logo"
             src="images/urbancart.png" />
           <img className="mobile-logo"
-            src="images/mobile-logo-white.png" />
+            src="images/mobile-logo.png" />
         </NavLink>
       </div>
 

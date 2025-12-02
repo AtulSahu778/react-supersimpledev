@@ -1,41 +1,41 @@
 .orders-page {
-  max-width: 850px;
-  margin-top: 90px;
-  margin-bottom: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  /* margin-left: auto;
-     margin-right auto;
-     Is a trick for centering an element horizontally
-     without needing a container. */
+  max-width: 1000px;
+  margin-top: 110px;
+  margin-bottom: 60px;
+  padding: 20px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .orders-page .page-title {
   font-weight: 700;
-  font-size: 26px;
-  margin-bottom: 25px;
+  font-size: 32px;
+  margin-bottom: 32px;
+  color: var(--text-main);
+  letter-spacing: -1px;
 }
 
 .orders-page .orders-grid {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 50px;
+  gap: 24px;
+}
+
+.orders-page .order-container {
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
 }
 
 .orders-page .order-header {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(222, 222, 222);
-
+  background: linear-gradient(135deg, rgba(25, 155, 226, 0.08), rgba(25, 155, 226, 0.03));
+  border: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 20px 25px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--divider);
 }
 
 .orders-page .order-header-left-section {
@@ -44,12 +44,22 @@
 }
 
 .orders-page .order-header-label {
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 2px;
 }
 
 .orders-page .order-date,
 .orders-page .order-total {
-  margin-right: 45px;
+  margin-right: 48px;
+}
+
+.orders-page .order-date > div:last-child,
+.orders-page .order-total > div:last-child {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 16px;
 }
 
 .orders-page .order-header-right-section {
@@ -86,16 +96,12 @@
 }
 
 .orders-page .order-details-grid {
-  padding: 40px 25px;
-  border: 1px solid rgb(222, 222, 222);
-  border-top: none;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-
+  padding: 28px;
+  border: none;
   display: grid;
-  grid-template-columns: 110px 1fr 220px;
-  column-gap: 35px;
-  row-gap: 60px;
+  grid-template-columns: 120px 1fr 220px;
+  column-gap: 28px;
+  row-gap: 32px;
   align-items: center;
 }
 
@@ -115,40 +121,55 @@
 
 .orders-page .product-image-container {
   text-align: center;
-}
-
-.orders-page .product-image-container img {
-  max-width: 110px;
-  max-height: 110px;
-}
-
-.orders-page .product-name {
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.orders-page .product-delivery-date {
-  margin-bottom: 3px;
-}
-
-.orders-page .product-quantity {
-  margin-bottom: 8px;
-}
-
-.orders-page .buy-again-button {
-  font-size: 14px;
-  width: 140px;
-  height: 36px;
-  border-radius: 5px;
-
+  background: var(--bg-app);
+  border-radius: 16px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 120px;
+}
+
+.orders-page .product-image-container img {
+  max-width: 100%;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+.orders-page .product-name {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+}
+
+.orders-page .product-delivery-date {
+  margin-bottom: 6px;
+  color: var(--success);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.orders-page .product-quantity {
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.orders-page .buy-again-button {
+  font-size: 15px;
+  width: 160px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .orders-page .buy-again-icon {
-  width: 20px;
-  margin-right: 10px;
+  width: 18px;
+  filter: brightness(0) invert(1);
 }
 
 .orders-page .product-actions {
@@ -157,8 +178,9 @@
 
 .orders-page .track-package-button {
   width: 100%;
-  font-size: 14px;
-  padding: 8px;
+  font-size: 15px;
+  padding: 12px 20px;
+  height: 44px;
 }
 
 @media (max-width: 800px) {
