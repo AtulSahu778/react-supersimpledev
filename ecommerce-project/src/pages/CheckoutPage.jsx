@@ -1,8 +1,15 @@
 import React from 'react'
+import './checkout-header.css';
+import './CheckoutPage.css';
 
-function Checkout() {
+
+function CheckoutPage() {
   return (
     <>
+
+    <title>Checkout</title>
+
+    
     <div className="checkout-header">
       <div className="header-content">
         <div className="checkout-header-left-section">
@@ -219,4 +226,4 @@ function Checkout() {
   )
 }
 
-export default Checkout
+export default CheckoutPage;

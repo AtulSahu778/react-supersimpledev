@@ -5,6 +5,9 @@ import './HomePage.css';
 function HomePage() {
   return (
     <>
+
+    <title>UrbanCart - Ecommerce App</title> 
+
     <div className="header">
       <div className="left-section">
         <a href="index.html" className="header-link">
