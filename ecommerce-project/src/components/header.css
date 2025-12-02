@@ -105,7 +105,6 @@
 
 .header .orders-link {
   color: white;
-
   display: flex;
   align-items: center;
   padding-left: 13px;
@@ -146,4 +145,8 @@
 
   width: 26px;
   text-align: center;
+}
+
+.orders-link.active{
+  text-decoration: underline;
 }
