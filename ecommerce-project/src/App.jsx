@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router'
 import CheckoutPage from './pages/Checkout/CheckoutPage';
 import OrdersPage from './pages/Orders/OrdersPage';
 import TrackOrders from './pages/Tracking/TrackingPage';
+import PageNotFound from './pages/404Error/PageNotFound';
 
 function App() {
   
@@ -25,6 +26,11 @@ function App() {
       <Route 
         path='/tracking' 
         element={<TrackOrders />} 
+      />
+    
+      <Route 
+        path='*' 
+        element={<PageNotFound />} 
       />
     </Routes>
     
