@@ -45,7 +45,7 @@ function HomePage({cart}) {
           </div>
 
           <div className="product-price">
-            &#8377;{FormatMoney(product.priceCents)}
+            {FormatMoney(product.priceCents)}
           </div>
 
           <div className="product-quantity-container">
