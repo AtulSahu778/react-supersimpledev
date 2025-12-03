@@ -3,7 +3,7 @@ import './HeaderCSS.css';
 import { NavLink } from 'react-router';
 
 
-function Header({cart}) {
+function Header({cart = []}) {
 
   let totalCartQuantity = 0;
 
