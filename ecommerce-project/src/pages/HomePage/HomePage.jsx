@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './HomePage.css';
 import Header from '../../components/Header';
 import axios from './../../../node_modules/axios/lib/axios';
+import { FormatMoney } from '../../utlis/FomatMoney';
+
 
 function HomePage({cart}) {
 
@@ -43,7 +45,7 @@ function HomePage({cart}) {
           </div>
 
           <div className="product-price">
-            &#8377;{product.priceCents}
+            &#8377;{FormatMoney(product.priceCents)}
           </div>
 
           <div className="product-quantity-container">
