@@ -16,21 +16,21 @@ function App() {
     .then((response) => {
       setCart(response.data);
     });
-  })
+  }, [])
 
   return (
     <Routes>
       <Route 
       index 
-      element={<HomePage cart={cart}/>} />
+      element={<HomePage cart={cart} />} />
       
       <Route 
       path='/checkout' 
-      element={<CheckoutPage cart={cart}/>} />
+      element={<CheckoutPage cart={cart} />} />
 
       <Route 
       path='/orders' 
-      element={<OrdersPage />} />
+      element={<OrdersPage cart={cart} />} />
 
       <Route 
         path='/tracking' 

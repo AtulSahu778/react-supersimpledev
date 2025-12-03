@@ -22,7 +22,7 @@ function CheckoutPage({cart}) {
     axios.get('api/payment-summary')
      .then((response) => {
       setPaymentSummary(response.data);
-     })
+     });
   },[]);
 
   return (

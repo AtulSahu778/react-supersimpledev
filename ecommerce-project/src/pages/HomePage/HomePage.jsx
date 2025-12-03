@@ -14,8 +14,8 @@ function HomePage({cart}) {
     axios.get("/api/products")
       .then((response) => {
         setProducts(response.data);
-    }, []);
-  })
+    });
+  }, [])
 
   return (
     <>
