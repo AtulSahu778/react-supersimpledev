@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './HomePage.css';
 import Header from '../../components/Header';
-import axios from './../../../node_modules/axios/lib/axios';
+import axios from 'axios/unsafe/axios.js';
 import { FormatMoney } from '../../utlis/FomatMoney';
 
 
