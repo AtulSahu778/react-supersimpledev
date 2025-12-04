@@ -3,7 +3,7 @@ import './HeaderCSS.css';
 import { NavLink } from 'react-router';
 
 
-function Header({cart = []}) {
+function Header({cart = [], isHomePage = false}) {
 
   let totalCartQuantity = 0;
 
@@ -15,7 +15,7 @@ function Header({cart = []}) {
 
   return (
    <>
-   <div className="header">
+   <div className={`header ${isHomePage ? 'header-homepage' : ''}`}>
       <div className="left-section">
         <NavLink to ="/" className="header-link">
           <img className="logo"

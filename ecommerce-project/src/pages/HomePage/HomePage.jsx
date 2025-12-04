@@ -24,7 +24,7 @@ function HomePage({cart}) {
     <>
     <title>UrbanCart - Ecommerce App</title> 
 
-    <Header cart={cart}/>
+    <Header cart={cart} isHomePage={true}/>
 
     <div className="home-page">
       <ProductsGrid products={products}/>

@@ -6,7 +6,7 @@ import OrdersGrid from './OrdersGrid';
 
 
 
-function OrdersPage() {
+function OrdersPage({cart}) {
 
   const [orders, setOrders] = useState([]);
 
@@ -24,7 +24,7 @@ function OrdersPage() {
 
   return (
     <>
-    <Header />
+    <Header cart={cart} isHomePage={true} />
 
     <div className="orders-page">
       <div className="page-title">Your Orders</div>
