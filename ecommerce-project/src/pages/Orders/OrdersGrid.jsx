@@ -7,9 +7,9 @@ import OrdersHeader from './OrdersHeader';
 function OrdersGrid({orders}) {
   return (
     <div className="orders-grid">
-        {orders.map((order) => {
+        {orders.map((order , orderIndex) => {
           return (
-            <div key={order.id} className="order-container">
+            <div key={`${order.id}-${orderIndex}`} className="order-container">
 
           <OrdersHeader order={order}/>
 
@@ -38,7 +38,7 @@ function OrdersGrid({orders}) {
             </div>
 
             <div className="product-actions">
-              <Link to="/tracking">
+              <Link to={`/tracking/${order.id}`}>
                 <button className="track-package-button button-secondary">
                   Track package
                 </button>

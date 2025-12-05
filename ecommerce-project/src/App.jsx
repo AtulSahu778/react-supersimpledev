@@ -8,6 +8,7 @@ import PageNotFound from './pages/404Error/PageNotFound';
 import { useEffect,useState } from 'react';
 import axios from 'axios';
 
+
 function App() {
   const [cart, setCart] = useState([]);
 
@@ -34,7 +35,7 @@ function App() {
       element={<OrdersPage cart={cart} />} />
 
       <Route 
-        path='/tracking' 
+        path='/tracking/:orderId' 
         element={<TrackOrders />} 
       />
     
