@@ -2,6 +2,7 @@ import  {React,  Fragment } from 'react'
 import { FormatMoney } from '../../utlis/FomatMoney';
 import dayjs from 'dayjs';
 import { Link } from 'react-router';
+import OrdersHeader from './OrdersHeader';
 
 function OrdersGrid({orders}) {
   return (
@@ -10,23 +11,7 @@ function OrdersGrid({orders}) {
           return (
             <div key={order.id} className="order-container">
 
-          <div className="order-header">
-            <div className="order-header-left-section">
-              <div className="order-date">
-                <div className="order-header-label">Order Placed:</div>
-                <div>{dayjs(order.ordersTimeMs).format('MMMM D')}</div>
-              </div>
-              <div className="order-total">
-                <div className="order-header-label">Total:</div>
-                <div>{FormatMoney(order.totalCostCents)}</div>
-              </div>
-            </div>
-
-            <div className="order-header-right-section">
-              <div className="order-header-label">Order ID:</div>
-              <div>{order.id}</div>
-            </div>
-          </div>
+          <OrdersHeader order={order}/>
 
           <div className="order-details-grid">
             {order.products.map((orderProduct) => {

@@ -6,7 +6,7 @@ import OrdersPage from './pages/Orders/OrdersPage';
 import TrackOrders from './pages/Tracking/TrackingPage';
 import PageNotFound from './pages/404Error/PageNotFound';
 import { useEffect,useState } from 'react';
-import axios from 'axios/unsafe/axios.js';
+import axios from 'axios';
 
 function App() {
   const [cart, setCart] = useState([]);
