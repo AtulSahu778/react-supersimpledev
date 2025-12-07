@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormatMoney } from '../../utlis/FomatMoney';
-import dayjs from 'dayjs';
+import DeliveryOptions from './DeliveryOptions';
 
-function CartItems({deliveryOptions, cartItem}) {
+function CartItems({deliveryOptions, cartItem, loadCart}) {
   return (
     <div className="cart-item-details-grid">
               <img className="product-image"
@@ -28,36 +28,7 @@ function CartItems({deliveryOptions, cartItem}) {
                 </div>
               </div>
 
-              <div className="delivery-options">
-                <div className="delivery-options-title">
-                  Choose a delivery option:
-                </div>
-                {deliveryOptions.map((deliveryOption) => {
-
-                  let priceString = `FREE Shipping`;
-                  
-                  if(deliveryOption.priceCents > 0){
-                    priceString = `${FormatMoney(deliveryOption.priceCents)} - Shipping`
-                  }
-
-                  return (
-                    <div key={deliveryOption.id}  className="delivery-option">
-                  <input type="radio" 
-                  checked={deliveryOption.id === cartItem.deliveryOptionId}
-                    className="delivery-option-input"
-                    name={`delivery-option-${cartItem.productId}`} />
-                  <div>
-                    <div className="delivery-option-date">
-                    {dayjs().add(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
-                    </div>
-                    <div className="delivery-option-price">
-                    {priceString}
-                    </div>
-                  </div>
-                </div>
-                  );
-                })}
-              </div>
+              <DeliveryOptions cartItem={cartItem} deliveryOptions={deliveryOptions} loadCart={loadCart} />
             </div>
   )
 }
