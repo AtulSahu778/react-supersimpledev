@@ -4,7 +4,7 @@ import CartItems from './CartItems';
 import DeliveryDate from './DeliveryDate';
 
 
-function OrdersSummary({deliveryOptions , cart, loadCart={loadCart}}) {
+function OrdersSummary({deliveryOptions , cart, loadCart}) {
   return (
     <div className="order-summary">
           {deliveryOptions.length > 0 && cart.map((cartItem) => {
