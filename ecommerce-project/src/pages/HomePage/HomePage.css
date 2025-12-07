@@ -157,7 +157,7 @@
 }
 
 .home-page .product-quantity-container select {
-  width: 100%;
+  width: 60px;
   padding: 12px 14px;
   font-size: 15px;
   border-radius: 10px;
