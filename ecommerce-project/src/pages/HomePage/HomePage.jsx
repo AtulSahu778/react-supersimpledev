@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './HomePage.css';
 import Header from '../../components/Header';
-import axios from 'axios/unsafe/axios.js';
+import axios from 'axios';
 import { FormatMoney } from '../../utlis/FomatMoney';
 import ProductsGrid from './ProductsGrid';
 
 
-function HomePage({cart}) {
+function HomePage({cart , loadCart}) {
 
   const [products, setProducts] = useState([]);
   
@@ -27,7 +27,7 @@ function HomePage({cart}) {
     <Header cart={cart} isHomePage={true}/>
 
     <div className="home-page">
-      <ProductsGrid products={products}/>
+      <ProductsGrid products={products} loadCart={loadCart}/>
     </div>
     </>
   )
