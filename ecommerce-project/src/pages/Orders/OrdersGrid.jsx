@@ -44,11 +44,9 @@ function OrdersGrid({orders ,loadCart}) {
               <div className="product-quantity">
                 Quantity: {orderProduct.quantity}
               </div>
-              <button className="buy-again-button button-primary">
+              <button className="buy-again-button button-primary" onClick={addToCart}>
                 <img className="buy-again-icon" src="images/icons/buy-again.png" />
-                <span className="buy-again-message"
-                      onClick={addToCart}
-                >Add to Cart</span>
+                <span className="buy-again-message">Add to Cart</span>
               </button>
             </div>
 
