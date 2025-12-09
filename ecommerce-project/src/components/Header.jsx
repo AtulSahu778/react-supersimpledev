@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './HeaderCSS.css';
 import { NavLink } from 'react-router';
 import { useNavigate } from 'react-router';
@@ -19,6 +19,18 @@ function Header({cart = [], isHomePage = false, isTrackingPage = false}) {
 
   const [search, setSearch] = useState(searchText || '');
  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (search.trim()) {
+        navigate(`/?search=${search}`);
+      } else if (searchText) {
+        navigate('/');
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
   const searchBar = () => {
     if (search.trim()) {
       navigate(`/?search=${search}`);
