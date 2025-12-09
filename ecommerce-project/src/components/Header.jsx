@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './HeaderCSS.css';
 import { NavLink } from 'react-router';
+import { useNavigate } from 'react-router';
+import { useSearchParams } from 'react-router';
 
 
 function Header({cart = [], isHomePage = false, isTrackingPage = false}) {
@@ -10,6 +12,26 @@ function Header({cart = [], isHomePage = false, isTrackingPage = false}) {
   cart.forEach(CartItem => {
     totalCartQuantity += CartItem.quantity;
   });
+
+  const [searchParams] = useSearchParams();
+  const searchText = searchParams.get('search');
+  const navigate = useNavigate();
+
+  const [search, setSearch] = useState(searchText || '');
+ 
+  const searchBar = () => {
+    if (search.trim()) {
+      navigate(`/?search=${search}`);
+    } else {
+      navigate('/');
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      searchBar();
+    }
+  }
 
 
 
@@ -27,9 +49,16 @@ function Header({cart = [], isHomePage = false, isTrackingPage = false}) {
 
       {!isTrackingPage && (
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input 
+            className="search-bar" 
+            type="text" 
+            placeholder="Search" 
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
 
-          <button className="search-button">
+          <button className="search-button" onClick={searchBar}>
             <img className="search-icon" src="images/icons/search-icon.png" />
           </button>
         </div>

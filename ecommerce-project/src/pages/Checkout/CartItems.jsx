@@ -1,13 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FormatMoney } from '../../utlis/FomatMoney';
 import DeliveryOptions from './DeliveryOptions';
 import axios from 'axios';
 
 function CartItems({deliveryOptions, cartItem, loadCart}) {
 
+  const [quantity, setQuantity] = useState(cartItem.quantity);
+  const [updateQuantity, setUpdateQuantity] = useState(false);
+
+  const updateStatus = async () => {
+    if(updateQuantity){
+      if(!quantity || Number(quantity) < 0) return;
+      await axios.put(`/api/cart-items/${cartItem.productId}`, {
+      quantity: Number(quantity)
+    });
+    loadCart();
+    setUpdateQuantity(false);
+    }
+    else{
+      setUpdateQuantity(true);
+    }
+  };
+
+  const updateTheQuantity = (e) => {
+    setQuantity(e.target.value);
+
+  };
+
+
   const deleteCartItem = async () => {
     await axios.delete(`/api/cart-items/${cartItem.productId}`);
     await loadCart();
+  };
+  
+  const keyInputEvent = (e) => {
+    const key = e.key;
+    if(key === 'Enter'){
+      updateStatus();
+    }
+    else if(key === 'Escape'){
+      setQuantity(cartItem.quantity);
+      setUpdateQuantity(false);
+    }
   }
 
   return (
@@ -24,12 +58,16 @@ function CartItems({deliveryOptions, cartItem, loadCart}) {
                 </div>
                 <div className="product-quantity">
                   <span>
-                    Quantity: <span className="quantity-label">{cartItem.quantity}</span>
+                    Quantity: {updateQuantity
+                  ? <input type="text" value={quantity} className="quantity-label-input" onKeyDown={keyInputEvent} onChange={updateTheQuantity}/>
+                  : <span className="quantity-label">{cartItem.quantity}
+                  </span>
+                  }
                   </span>
                   <span className="update-quantity-link link-primary"
-                        
+                        onClick={updateStatus}  
                   >
-                    Update
+                    {updateQuantity ? "Save" : "Update"}
                   </span>
                   <span className="delete-quantity-link link-primary"
                         onClick={deleteCartItem}

@@ -25,7 +25,7 @@ function OrdersGrid({orders ,loadCart}) {
                   quantity: 1
                 })
                 loadCart();
-                console.log(addToCart);
+                
           }
 
               return (

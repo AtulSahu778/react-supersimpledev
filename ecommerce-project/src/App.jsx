@@ -37,7 +37,7 @@ function App() {
 
       <Route 
         path='/tracking/:orderId' 
-        element={<TrackOrders />} 
+        element={<TrackOrders cart={cart} />} 
       />
     
       <Route 

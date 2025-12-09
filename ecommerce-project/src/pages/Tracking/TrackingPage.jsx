@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 import dayjs from 'dayjs';
 
-function TrackOrders() {
+function TrackOrders({ cart }) {
 
   const { orderId } = useParams();
   const [trackingOrder, setTrackingOrder] = useState(null);
@@ -15,7 +15,7 @@ function TrackOrders() {
     const getTrackingData = async () => {
       const response = await axios.get(`/api/orders/${orderId}?expand=products`);
       setTrackingOrder(response.data);
-      console.log(response);
+      
     }
     
     getTrackingData();
@@ -29,7 +29,7 @@ function TrackOrders() {
 
   return (
     <>
-    <Header isHomePage={true} />
+    <Header isHomePage={true} cart={cart}/>
 
     <title>Tracking</title>
 
