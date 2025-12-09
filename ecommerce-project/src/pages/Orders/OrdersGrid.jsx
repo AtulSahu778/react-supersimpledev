@@ -1,10 +1,13 @@
 import  {React,  Fragment } from 'react'
-import { FormatMoney } from '../../utlis/FomatMoney';
 import dayjs from 'dayjs';
 import { Link } from 'react-router';
 import OrdersHeader from './OrdersHeader';
+import axios from 'axios';
 
-function OrdersGrid({orders}) {
+function OrdersGrid({orders ,loadCart}) {
+
+
+
   return (
     <div className="orders-grid">
         {orders.map((order , orderIndex) => {
@@ -15,6 +18,16 @@ function OrdersGrid({orders}) {
 
           <div className="order-details-grid">
             {order.products.map((orderProduct) => {
+
+               const addToCart = async () => {
+                await axios.post('/api/cart-items' , {
+                  productId: orderProduct.product.id,
+                  quantity: 1
+                })
+                loadCart();
+                console.log(addToCart);
+          }
+
               return (
                 <Fragment key={orderProduct.product.id}>
                   <div className="product-image-container">
@@ -33,7 +46,9 @@ function OrdersGrid({orders}) {
               </div>
               <button className="buy-again-button button-primary">
                 <img className="buy-again-icon" src="images/icons/buy-again.png" />
-                <span className="buy-again-message">Add to Cart</span>
+                <span className="buy-again-message"
+                      onClick={addToCart}
+                >Add to Cart</span>
               </button>
             </div>
 

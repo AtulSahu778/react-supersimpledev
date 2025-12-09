@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import './OrdersPage.css';
 import Header from '../../components/Header';
-import axios from 'axios/unsafe/axios.js';
+import axios from 'axios';
 import OrdersGrid from './OrdersGrid';
 
 
 
-function OrdersPage({cart}) {
+function OrdersPage({cart , products, loadCart}) {
 
   const [orders, setOrders] = useState([]);
 
@@ -29,7 +29,7 @@ function OrdersPage({cart}) {
     <div className="orders-page">
       <div className="page-title">Your Orders</div>
 
-      <OrdersGrid orders={orders}/>
+      <OrdersGrid orders={orders} products={products} loadCart={loadCart}/>
     </div>
     </>
   )
