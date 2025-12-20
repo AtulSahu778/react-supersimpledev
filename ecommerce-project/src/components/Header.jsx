@@ -55,7 +55,7 @@ function Header({cart = [], isHomePage = false, isTrackingPage = false}) {
           <img className="logo"
             src="images/urbancart.png" />
           <img className="mobile-logo"
-            src="images/mobile-logo.png" />
+            src="images/urbancart.png" />
         </NavLink>
       </div>
 

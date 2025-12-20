@@ -9,7 +9,7 @@ function CheckoutHeader({cart}) {
         <div className="checkout-header-left-section">
           <Link to="/">
             <img className="logo" src="images/urbancart.png" />
-            <img className="mobile-logo" src="images/mobile-logo.png" />
+            <img className="mobile-logo" src="images/urbancart.png" />
           </Link>
         </div>
 
