@@ -20,6 +20,27 @@
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
 }
 
+@media (max-width: 675px) {
+  .header {
+    border-radius: 0 0 30px 30px;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    border-radius: 0 0 35px 35px;
+  }
+}
+
+@media (max-width: 375px) {
+  .header {
+    border-radius: 0 0 30px 30px;
+  }
+}
+
 .header .left-section {
   flex-shrink: 0;
   display: flex;
@@ -276,6 +297,7 @@
 
 @media (max-width: 480px) {
   .header-homepage {
-    border-radius: 10px;
+    /* Extra curve on small screens */
+    border-radius: clamp(30px, 8vw, 60px);
   }
 }
