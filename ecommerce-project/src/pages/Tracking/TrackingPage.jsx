@@ -29,7 +29,7 @@ function TrackOrders({ cart }) {
 
   return (
     <>
-    <Header isHomePage={true} cart={cart}/>
+    <Header isHomePage={true} isTrackingPage={true} cart={cart}/>
 
     <title>Tracking</title>
 

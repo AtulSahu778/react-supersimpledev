@@ -23,6 +23,15 @@
   --glass-blur: blur(20px) saturate(180%);
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-main);
@@ -30,6 +39,9 @@ body {
   margin: 0;
   line-height: 1.5;
   letter-spacing: -0.3px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Remove the default margins of <p> elements. */
@@ -38,10 +50,13 @@ p {
 }
 
 button {
-  font-size: 15px;
+  font-size: clamp(14px, 3.5vw, 15px);
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s ease;
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:active {
@@ -50,10 +65,16 @@ button:active {
 
 select {
   cursor: pointer;
+  min-height: 44px;
 }
 
 input, select, button {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+input {
+  font-size: 16px; /* Prevents zoom on iOS */
+  min-height: 44px;
 }
 
 .button-primary {
@@ -65,12 +86,18 @@ input, select, button {
   box-shadow: 0 4px 12px rgba(25, 155, 226, 0.25);
   font-weight: 600;
   transition: all 0.2s ease;
+  min-height: 48px;
+  padding: clamp(12px, 2.5vw, 14px) clamp(20px, 4vw, 24px);
+  font-size: clamp(14px, 3.5vw, 16px);
+  touch-action: manipulation;
 }
 
-.button-primary:hover {
-  background: linear-gradient(135deg, var(--primary-hover), #0066DD);
-  box-shadow: 0 6px 16px rgba(25, 155, 226, 0.35);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .button-primary:hover {
+    background: linear-gradient(135deg, var(--primary-hover), #0066DD);
+    box-shadow: 0 6px 16px rgba(25, 155, 226, 0.35);
+    transform: translateY(-1px);
+  }
 }
 
 .button-primary:active {
@@ -86,10 +113,16 @@ input, select, button {
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s ease;
+  min-height: 48px;
+  padding: clamp(12px, 2.5vw, 14px) clamp(20px, 4vw, 24px);
+  font-size: clamp(14px, 3.5vw, 16px);
+  touch-action: manipulation;
 }
 
-.button-secondary:hover {
-  background: rgba(25, 155, 226, 0.15);
+@media (hover: hover) {
+  .button-secondary:hover {
+    background: rgba(25, 155, 226, 0.15);
+  }
 }
 
 .button-secondary:active {
@@ -114,10 +147,16 @@ input, select, button {
   cursor: pointer;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  touch-action: manipulation;
 }
 
-.link-primary:hover {
-  opacity: 0.7;
+@media (hover: hover) {
+  .link-primary:hover {
+    opacity: 0.7;
+  }
 }
 
 .link-primary:active {
@@ -130,15 +169,18 @@ select {
   background-color: var(--bg-card);
   border: 1px solid var(--divider);
   border-radius: 12px;
-  padding: 6px 10px;
-  font-size: 15px;
+  padding: clamp(8px, 2vw, 10px) clamp(10px, 2.5vw, 12px);
+  font-size: clamp(14px, 3.5vw, 15px);
   cursor: pointer;
   box-shadow: var(--shadow-soft);
   transition: all 0.2s ease;
+  min-height: 44px;
 }
 
-select:hover {
-  border-color: var(--primary);
+@media (hover: hover) {
+  select:hover {
+    border-color: var(--primary);
+  }
 }
 
 select:focus,

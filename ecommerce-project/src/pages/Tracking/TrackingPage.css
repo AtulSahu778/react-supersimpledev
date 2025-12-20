@@ -1,8 +1,8 @@
 .tracking-page {
   max-width: 700px;
-  margin-top: 110px;
-  margin-bottom: 60px;
-  padding: 30px;
+  margin-top: clamp(100px, 15vh, 110px);
+  margin-bottom: clamp(40px, 8vh, 60px);
+  padding: clamp(16px, 4vw, 30px);
   margin-left: auto;
   margin-right: auto;
 }
@@ -10,9 +10,9 @@
 .tracking-page .order-tracking {
   background: var(--bg-card);
   border-radius: var(--radius-card);
-  padding: 32px;
+  padding: clamp(20px, 5vw, 32px);
   box-shadow: var(--shadow-card);
-  margin-bottom: 32px;
+  margin-bottom: clamp(24px, 4vh, 32px);
 }
 
 .tracking-page .order-tracking:last-child {
@@ -22,13 +22,14 @@
 .tracking-page .back-to-orders-link {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 24px;
-  font-size: 16px;
+  margin-bottom: clamp(16px, 3vh, 24px);
+  font-size: clamp(14px, 3.5vw, 16px);
   font-weight: 600;
-  padding: 8px 16px;
+  padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
   background: rgba(25, 155, 226, 0.08);
   border-radius: 12px;
   transition: all 0.2s ease;
+  min-height: 44px;
 }
 
 .tracking-page .back-to-orders-link:hover {
@@ -36,60 +37,74 @@
 }
 
 .tracking-page .delivery-date {
-  font-size: 28px;
+  font-size: clamp(20px, 5vw, 28px);
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: clamp(12px, 2vh, 16px);
   color: var(--text-main);
   letter-spacing: -0.8px;
+  line-height: 1.2;
 }
 
 .tracking-page .product-info {
   margin-bottom: 8px;
   color: var(--text-secondary);
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 16px);
+  line-height: 1.5;
 }
 
 .tracking-page .product-image {
-  max-width: 180px;
-  max-height: 180px;
-  margin-top: 24px;
-  margin-bottom: 48px;
+  max-width: min(180px, 50vw);
+  max-height: min(180px, 50vw);
+  width: 100%;
+  height: auto;
+  margin-top: clamp(16px, 3vh, 24px);
+  margin-bottom: clamp(32px, 6vh, 48px);
   border-radius: 16px;
   background: var(--bg-app);
-  padding: 16px;
+  padding: clamp(12px, 3vw, 16px);
+  object-fit: contain;
 }
 
 .tracking-page .progress-labels-container {
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 16px);
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: clamp(12px, 2vh, 16px);
+  gap: clamp(8px, 2vw, 12px);
 }
 
 .tracking-page .progress-label {
   color: var(--text-secondary);
   transition: color 0.3s ease;
+  flex: 1;
+  text-align: center;
 }
 
 .tracking-page .current-status {
   color: var(--success);
 }
 
-@media (max-width: 575px) {
+@media (max-width: 480px) {
   .tracking-page .progress-labels-container {
-    font-size: 16px;
+    font-size: 14px;
+  }
+  
+  .tracking-page .progress-label {
+    text-align: left;
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 380px) {
   .tracking-page .progress-labels-container {
     flex-direction: column;
-    margin-bottom: 5px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 4px;
   }
 
   .tracking-page .progress-label {
-    margin-bottom: 3px;
+    margin-bottom: 0;
   }
 }
 
@@ -107,14 +122,6 @@
   height: 100%;
   background: linear-gradient(90deg, var(--success), #30D158);
   border-radius: 999px;
-  width: 50%;
   transition: width 0.5s ease;
   box-shadow: 0 0 8px rgba(52, 199, 89, 0.4);
-}
-
-
-.progress-bar{
-  height: 6px;
-  background-color: #4caf50;
-  border-radius: 4px;
 }

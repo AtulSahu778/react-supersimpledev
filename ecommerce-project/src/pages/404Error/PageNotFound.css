@@ -4,19 +4,21 @@
   align-items: center;
   min-height: 100vh;
   background: var(--bg-app);
+  padding: clamp(16px, 3vw, 24px);
 }
 
 .not-found-content {
   text-align: center;
   max-width: 500px;
-  padding: 48px 32px;
+  width: 100%;
+  padding: clamp(32px, 6vw, 48px) clamp(24px, 5vw, 32px);
   background: var(--bg-card);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
 }
 
 .error-code {
-  font-size: 140px;
+  font-size: clamp(80px, 20vw, 140px);
   font-weight: 800;
   margin: 0;
   background: linear-gradient(135deg, var(--primary), #007AFF);
@@ -24,22 +26,23 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1;
-  letter-spacing: -4px;
+  letter-spacing: clamp(-2px, -0.5vw, -4px);
 }
 
 .error-heading {
-  font-size: 32px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  font-size: clamp(24px, 6vw, 32px);
+  margin-top: clamp(12px, 2vh, 16px);
+  margin-bottom: clamp(12px, 2vh, 16px);
   color: var(--text-main);
   font-weight: 700;
   letter-spacing: -1px;
+  line-height: 1.2;
 }
 
 .error-text {
-  font-size: 17px;
+  font-size: clamp(15px, 4vw, 17px);
   color: var(--text-secondary);
-  margin-bottom: 32px;
+  margin-bottom: clamp(24px, 4vh, 32px);
   line-height: 1.6;
 }
 
@@ -47,19 +50,23 @@
   background: linear-gradient(135deg, var(--primary), #007AFF);
   color: white;
   border: none;
-  padding: 16px 40px;
-  font-size: 17px;
+  padding: clamp(14px, 3vw, 16px) clamp(32px, 6vw, 40px);
+  font-size: clamp(15px, 4vw, 17px);
   font-weight: 600;
   border-radius: var(--radius-button);
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(25, 155, 226, 0.25);
+  min-height: 52px;
+  touch-action: manipulation;
 }
 
-.home-button:hover {
-  background: linear-gradient(135deg, var(--primary-hover), #0066DD);
-  box-shadow: 0 6px 16px rgba(25, 155, 226, 0.35);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .home-button:hover {
+    background: linear-gradient(135deg, var(--primary-hover), #0066DD);
+    box-shadow: 0 6px 16px rgba(25, 155, 226, 0.35);
+    transform: translateY(-2px);
+  }
 }
 
 .home-button:active {

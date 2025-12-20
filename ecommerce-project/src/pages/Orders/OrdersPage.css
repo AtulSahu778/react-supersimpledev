@@ -1,24 +1,25 @@
 .orders-page {
   max-width: 1000px;
-  margin-top: 110px;
-  margin-bottom: 60px;
-  padding: 20px;
+  margin-top: clamp(100px, 15vh, 110px);
+  margin-bottom: clamp(40px, 8vh, 60px);
+  padding: clamp(16px, 3vw, 20px);
   margin-left: auto;
   margin-right: auto;
 }
 
 .orders-page .page-title {
   font-weight: 700;
-  font-size: 32px;
-  margin-bottom: 32px;
+  font-size: clamp(24px, 6vw, 32px);
+  margin-bottom: clamp(20px, 4vh, 32px);
   color: var(--text-main);
   letter-spacing: -1px;
+  line-height: 1.2;
 }
 
 .orders-page .orders-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: clamp(16px, 3vh, 24px);
 }
 
 .orders-page .order-container {
@@ -34,32 +35,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 28px;
+  padding: clamp(16px, 3vw, 24px) clamp(20px, 4vw, 28px);
   border-bottom: 1px solid var(--divider);
+  gap: clamp(12px, 2vw, 16px);
 }
 
 .orders-page .order-header-left-section {
   display: flex;
   flex-shrink: 0;
+  gap: clamp(24px, 5vw, 48px);
 }
 
 .orders-page .order-header-label {
   font-weight: 600;
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 14px);
   margin-bottom: 2px;
-}
-
-.orders-page .order-date,
-.orders-page .order-total {
-  margin-right: 48px;
 }
 
 .orders-page .order-date > div:last-child,
 .orders-page .order-total > div:last-child {
   font-weight: 600;
   color: var(--text-main);
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 16px);
 }
 
 .orders-page .order-header-right-section {
@@ -69,106 +67,112 @@
 @media (max-width: 575px) {
   .orders-page .order-header {
     flex-direction: column;
-    align-items: start;
-    line-height: 23px;
-    padding: 15px;
+    align-items: flex-start;
+    line-height: 1.5;
+    gap: 12px;
   }
 
   .orders-page .order-header-left-section {
     flex-direction: column;
-  }
-
-  .orders-page .order-header-label {
-    margin-right: 5px;
+    gap: 8px;
+    width: 100%;
   }
 
   .orders-page .order-date,
   .orders-page .order-total {
     display: grid;
     grid-template-columns: auto 1fr;
-    margin-right: 0;
+    gap: 8px;
   }
 
   .orders-page .order-header-right-section {
     display: grid;
     grid-template-columns: auto 1fr;
+    gap: 8px;
+    width: 100%;
   }
 }
 
 .orders-page .order-details-grid {
-  padding: 28px;
+  padding: clamp(20px, 4vw, 28px);
   border: none;
   display: grid;
-  grid-template-columns: 120px 1fr 220px;
-  column-gap: 28px;
-  row-gap: 32px;
+  grid-template-columns: clamp(100px, 20vw, 120px) 1fr clamp(180px, 30vw, 220px);
+  column-gap: clamp(16px, 3vw, 28px);
+  row-gap: clamp(24px, 4vh, 32px);
   align-items: center;
 }
 
 @media (max-width: 800px) {
   .orders-page .order-details-grid {
-    grid-template-columns: 110px 1fr;
+    grid-template-columns: clamp(90px, 20vw, 110px) 1fr;
     row-gap: 0;
     padding-bottom: 8px;
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 480px) {
   .orders-page .order-details-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
 .orders-page .product-image-container {
   text-align: center;
   background: var(--bg-app);
-  border-radius: 16px;
-  padding: 12px;
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(8px, 2vw, 12px);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 120px;
+  min-height: clamp(100px, 20vw, 120px);
 }
 
 .orders-page .product-image-container img {
   max-width: 100%;
-  max-height: 100px;
+  max-height: clamp(80px, 18vw, 100px);
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 
 .orders-page .product-name {
   font-weight: 600;
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin-bottom: clamp(8px, 1.5vh, 10px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-main);
   letter-spacing: -0.3px;
+  line-height: 1.4;
 }
 
 .orders-page .product-delivery-date {
   margin-bottom: 6px;
   color: var(--success);
   font-weight: 600;
-  font-size: 15px;
+  font-size: clamp(13px, 3.5vw, 15px);
 }
 
 .orders-page .product-quantity {
-  margin-bottom: 12px;
+  margin-bottom: clamp(10px, 2vh, 12px);
   color: var(--text-secondary);
-  font-size: 15px;
+  font-size: clamp(13px, 3.5vw, 15px);
 }
 
 .orders-page .buy-again-button {
-  font-size: 15px;
-  width: 160px;
-  height: 44px;
+  font-size: clamp(13px, 3.5vw, 15px);
+  width: clamp(140px, 30vw, 160px);
+  min-height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: clamp(6px, 1.5vw, 8px);
+  padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 20px);
 }
 
 .orders-page .buy-again-icon {
-  width: 18px;
+  width: clamp(16px, 4vw, 18px);
+  height: auto;
   filter: brightness(0) invert(1);
 }
 
@@ -178,9 +182,9 @@
 
 .orders-page .track-package-button {
   width: 100%;
-  font-size: 15px;
-  padding: 12px 20px;
-  height: 44px;
+  font-size: clamp(13px, 3.5vw, 15px);
+  padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 20px);
+  min-height: 48px;
 }
 
 @media (max-width: 800px) {
@@ -189,29 +193,25 @@
   }
 
   .orders-page .product-actions {
-    /* grid-column: 2 means this element will be placed
-       in column 2 in the grid. (Normally, the column that
-       an element is placed in is determined by the order
-       of the elements in the HTML. grid-column overrides
-       this default ordering). */
     grid-column: 2;
     margin-bottom: 30px;
   }
 
   .orders-page .track-package-button {
-    width: 140px;
+    width: clamp(120px, 30vw, 140px);
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 480px) {
   .orders-page .product-image-container {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 16px;
+    min-height: auto;
   }
 
   .orders-page .product-image-container img {
-    max-width: 150px;
-    max-height: 150px;
+    max-width: min(150px, 40vw);
+    max-height: min(150px, 40vw);
   }
 
   .orders-page .product-name {
@@ -224,19 +224,15 @@
 
   .orders-page .buy-again-button {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   .orders-page .product-actions {
-    /* grid-column: auto; undos grid-column: 2; from above.
-      This element will now be placed in its normal column
-      in the grid. */
     grid-column: auto;
-    margin-bottom: 70px;
+    margin-bottom: 0;
   }
 
   .orders-page .track-package-button {
     width: 100%;
-    padding: 12px;
   }
 }

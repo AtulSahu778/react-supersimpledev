@@ -78,13 +78,13 @@ function Header({cart = [], isHomePage = false, isTrackingPage = false}) {
 
       <div className="right-section">
         <NavLink className="orders-link header-link" to="/orders">
-
+          <img className="orders-icon" src="images/icons/orders.png" alt="Orders" />
           <span className="orders-text">Orders</span>
         </NavLink>
 
         {!isTrackingPage && (
           <NavLink className="cart-link header-link" to="/checkout">
-            <img className="cart-icon" src="images/icons/cart-icon.png" />
+            <img className="cart-icon" src="images/icons/cart-icon.png" alt="Cart" />
             <div className="cart-quantity">{totalCartQuantity}</div>
             <div className="cart-text">Cart</div>
           </NavLink>

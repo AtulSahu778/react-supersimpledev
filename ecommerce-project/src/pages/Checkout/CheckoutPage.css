@@ -1,39 +1,36 @@
 .checkout-page {
   max-width: 1200px;
-  padding: 30px;
-  margin-top: 110px;
-  margin-bottom: 60px;
+  padding: clamp(16px, 4vw, 30px);
+  margin-top: clamp(100px, 15vh, 110px);
+  margin-bottom: clamp(40px, 8vh, 60px);
   margin-left: auto;
   margin-right: auto;
 }
 
 .checkout-page .page-title {
   font-weight: 700;
-  font-size: 32px;
-  margin-bottom: 24px;
+  font-size: clamp(24px, 6vw, 32px);
+  margin-bottom: clamp(16px, 3vh, 24px);
   color: var(--text-main);
   letter-spacing: -1px;
+  line-height: 1.2;
 }
 
 .checkout-page .checkout-grid {
   display: grid;
-  /* Here, 1fr means the first column will take
-     up the remaining space in the grid. */
-  grid-template-columns: 1fr 350px;
-  column-gap: 12px;
-
-  /* Use align-items: start; to prevent the elements
-     in the grid from stretching vertically. */
+  grid-template-columns: 1fr clamp(300px, 40vw, 350px);
+  column-gap: clamp(12px, 2vw, 16px);
   align-items: start;
 }
 
 @media (max-width: 1000px) {
   .checkout-page .main {
-    max-width: 500px;
+    max-width: 100%;
   }
 
   .checkout-page .checkout-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
@@ -42,145 +39,157 @@
   background: var(--bg-card);
   border: none;
   border-radius: var(--radius-card);
-  padding: 24px;
+  padding: clamp(16px, 4vw, 24px);
   box-shadow: var(--shadow-card);
 }
 
 .checkout-page .cart-item-container {
-  margin-bottom: 20px;
+  margin-bottom: clamp(16px, 3vh, 20px);
 }
 
 .checkout-page .payment-summary {
-  padding: 24px;
   position: sticky;
-  top: 90px;
+  top: clamp(80px, 12vh, 90px);
 }
 
 @media (max-width: 1000px) {
   .checkout-page .payment-summary {
-    /* grid-row: 1 means this element will be placed into row
-      1 in the grid. (Normally, the row that an element is
-      placed in is determined by the order of the elements in
-      the HTML. grid-row overrides this default ordering). */
     grid-row: 1;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    position: static;
   }
 }
 
 .checkout-page .delivery-date {
   color: var(--primary);
   font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 20px;
-  padding: 12px 16px;
+  font-size: clamp(16px, 4vw, 18px);
+  margin-bottom: clamp(16px, 3vh, 20px);
+  padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 16px);
   background: rgba(25, 155, 226, 0.1);
   border-radius: 12px;
   display: inline-block;
+  line-height: 1.4;
 }
 
 .checkout-page .cart-item-details-grid {
   display: grid;
-  /* 100px 1fr 1fr; means the 2nd and 3rd column will
-    take up half the remaining space in the grid
-    (they will divide up the remaining space evenly). */
-  grid-template-columns: 100px 1fr 1fr;
-  column-gap: 25px;
+  grid-template-columns: clamp(80px, 18vw, 100px) 1fr 1fr;
+  column-gap: clamp(16px, 3vw, 25px);
+  row-gap: clamp(20px, 3vh, 24px);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .checkout-page .cart-item-details-grid {
-    grid-template-columns: 100px 1fr;
-    row-gap: 30px;
+    grid-template-columns: clamp(80px, 18vw, 100px) 1fr;
+    row-gap: clamp(16px, 3vh, 24px);
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-page .cart-item-details-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
 .checkout-page .product-image {
   max-width: 100%;
-  max-height: 120px;
+  max-height: clamp(100px, 20vw, 120px);
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   border-radius: 12px;
   background: var(--bg-app);
-  padding: 8px;
+  padding: clamp(6px, 1.5vw, 8px);
+  object-fit: contain;
+  display: block;
 }
 
 .checkout-page .product-name {
   font-weight: 600;
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin-bottom: clamp(8px, 1.5vh, 10px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-main);
   letter-spacing: -0.3px;
+  line-height: 1.4;
 }
 
 .checkout-page .product-price {
   font-weight: 700;
-  font-size: 18px;
+  font-size: clamp(16px, 4vw, 18px);
   color: var(--primary);
-  margin-bottom: 8px;
+  margin-bottom: clamp(6px, 1vh, 8px);
 }
 
 .checkout-page .product-quantity .link-primary {
   margin-left: 3px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .checkout-page .delivery-options {
-    /* grid-column: 1 means this element will be placed
-       in column 1 in the grid. (Normally, the column that
-       an element is placed in is determined by the order
-       of the elements in the HTML. grid-column overrides
-       this default ordering).
-
-       / span 2 means this element will take up 2 columns
-       in the grid (Normally, each element takes up 1
-       column in the grid). */
     grid-column: 1 / span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-page .delivery-options {
+    grid-column: auto;
   }
 }
 
 .checkout-page .delivery-options-title {
   font-weight: 600;
-  margin-bottom: 16px;
-  font-size: 16px;
+  margin-bottom: clamp(12px, 2vh, 16px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-main);
 }
 
 .checkout-page .delivery-option {
   display: grid;
-  grid-template-columns: 24px 1fr;
-  margin-bottom: 12px;
+  grid-template-columns: clamp(20px, 5vw, 24px) 1fr;
+  gap: clamp(8px, 2vw, 12px);
+  margin-bottom: clamp(10px, 2vh, 12px);
   cursor: pointer;
-  padding: 12px;
+  padding: clamp(10px, 2vw, 12px);
   border-radius: 12px;
   background: var(--bg-app);
   transition: all 0.2s ease;
+  min-height: 48px;
+  align-items: start;
 }
 
-.checkout-page .delivery-option:hover {
-  background: rgba(25, 155, 226, 0.08);
+@media (hover: hover) {
+  .checkout-page .delivery-option:hover {
+    background: rgba(25, 155, 226, 0.08);
+  }
 }
 
 .checkout-page .delivery-option-input {
-  margin: 3px 8px 0px 0px;
+  margin-top: 3px;
   cursor: pointer;
   accent-color: var(--primary);
+  width: clamp(18px, 4vw, 20px);
+  height: clamp(18px, 4vw, 20px);
 }
 
 .checkout-page .delivery-option-date {
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--text-main);
+  font-size: clamp(13px, 3.5vw, 15px);
 }
 
 .checkout-page .delivery-option-price {
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 14px);
 }
 
 .checkout-page .payment-summary-title {
   font-weight: 700;
-  font-size: 22px;
-  margin-bottom: 20px;
+  font-size: clamp(18px, 4.5vw, 22px);
+  margin-bottom: clamp(16px, 3vh, 20px);
   color: var(--text-main);
   letter-spacing: -0.5px;
 }
@@ -188,9 +197,10 @@
 .checkout-page .payment-summary-row {
   display: grid;
   grid-template-columns: 1fr auto;
-  font-size: 16px;
-  margin-bottom: 12px;
+  font-size: clamp(14px, 3.5vw, 16px);
+  margin-bottom: clamp(10px, 2vh, 12px);
   color: var(--text-main);
+  gap: clamp(12px, 2vw, 16px);
 }
 
 .checkout-page .payment-summary-money {
@@ -199,28 +209,34 @@
 }
 
 .checkout-page .subtotal-row {
-  margin-top: 16px;
-  padding-top: 16px;
+  margin-top: clamp(12px, 2vh, 16px);
+  padding-top: clamp(12px, 2vh, 16px);
   border-top: 1px solid var(--divider);
 }
 
 .checkout-page .total-row {
   color: var(--primary);
   font-weight: 700;
-  font-size: 20px;
-  margin-top: 16px;
-  padding-top: 16px;
+  font-size: clamp(18px, 4.5vw, 20px);
+  margin-top: clamp(12px, 2vh, 16px);
+  padding-top: clamp(12px, 2vh, 16px);
   border-top: 2px solid var(--divider);
 }
 
 .checkout-page .place-order-button {
   width: 100%;
-  padding: 16px;
-  font-size: 17px;
-  margin-top: 24px;
-  height: 56px;
+  padding: clamp(14px, 3vw, 16px);
+  font-size: clamp(15px, 4vw, 17px);
+  margin-top: clamp(20px, 3vh, 24px);
+  min-height: 56px;
 }
 
-.quantity-label-input{
-  width: 30px;
+.quantity-label-input {
+  width: clamp(28px, 8vw, 32px);
+  min-height: 44px;
+  padding: clamp(8px, 2vw, 10px);
+  font-size: clamp(14px, 3.5vw, 16px);
+  text-align: center;
+  border: 1px solid var(--divider);
+  border-radius: 8px;
 }

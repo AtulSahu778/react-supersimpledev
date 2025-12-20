@@ -1,81 +1,83 @@
 .checkout-header {
   height: 70px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 clamp(12px, 3vw, 20px);
   background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(10px) saturate(180%);
   -webkit-backdrop-filter: blur(10px) saturate(180%);
-  border-radius: 50px;
+  border-radius: clamp(20px, 5vw, 50px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
   position: fixed;
-  top: 20px;
+  top: clamp(10px, 2.5vh, 20px);
   left: 50%;
   transform: translateX(-50%);
   right: auto;
   max-width: 1400px;
-  width: calc(100% - 40px);
-  margin-left: auto;
-  margin-right: auto;
+  width: calc(100% - clamp(24px, 5vw, 40px));
+  margin: 0 auto;
   z-index: 1000;
 }
 
 .checkout-header .header-content {
   width: 100%;
   max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(8px, 2vw, 16px);
+}
 
+.checkout-header .checkout-header-left-section {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
 }
 
-.checkout-header .checkout-header-left-section {
-  width: 200px;
+@media (min-width: 576px) {
+  .checkout-header .checkout-header-left-section {
+    width: 180px;
+  }
 }
 
 .checkout-header .logo {
-  height: 90px;
-  margin-top: 0px;
+  height: clamp(60px, 15vw, 90px);
+  display: block;
 }
 
 .checkout-header .mobile-logo {
   display: none;
+  height: 26px;
 }
 
-/* @media is used to create responsive design (making the
-   website look good on any screen size). This @media
-   means when the screen width is 575px or less, different
-   styles (inside the {...}) will be applied. */
 @media (max-width: 575px) {
-  .checkout-header .checkout-header-left-section {
-    width: auto;
-  }
-
   .checkout-header .logo {
     display: none;
   }
 
   .checkout-header .mobile-logo {
     display: inline-block;
-    height: 26px;
   }
 }
 
 .checkout-header .checkout-header-middle-section {
   flex: 1;
-  flex-shrink: 0;
   text-align: center;
-  font-size: 20px;
+  font-size: clamp(16px, 4vw, 20px);
   font-weight: 600;
   color: var(--text-main);
   display: flex;
   justify-content: center;
   align-items: center;
   letter-spacing: -0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .checkout-header .return-to-home-link {
@@ -89,56 +91,36 @@
   opacity: 0.7;
 }
 
-@media (max-width: 1440px) {
-  .checkout-header {
-    width: calc(100% - 40px);
+.checkout-header .checkout-header-right-section {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media (min-width: 576px) {
+  .checkout-header .checkout-header-right-section {
+    width: 180px;
   }
 }
 
-@media (max-width: 1000px) {
-  .checkout-header .checkout-header-middle-section {
-    font-size: 20px;
-    margin-right: 60px;
-  }
-
-  .checkout-header .return-to-home-link {
-    font-size: 20px;
-  }
+.checkout-header .checkout-header-right-section img {
+  height: clamp(24px, 6vw, 28px);
+  width: auto;
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
   .checkout-header {
-    width: calc(100% - 32px);
-    margin-left: 16px;
-    margin-right: 16px;
-    left: auto;
+    left: 0;
     transform: none;
-    border-radius: 30px;
-    top: 10px;
+    margin: 0 clamp(12px, 3vw, 16px);
+    width: calc(100% - clamp(24px, 6vw, 32px));
   }
 }
 
-@media (max-width: 575px) {
-  .checkout-header .checkout-header-middle-section {
-    margin-right: 5px;
-  }
-}
-
-.checkout-header .checkout-header-right-section {
-  text-align: right;
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
-
-.checkout-header .checkout-header-right-section img {
-  height: 28px;
-  opacity: 0.7;
-}
-
-@media (max-width: 1000px) {
-  .checkout-header .checkout-header-right-section {
-    width: auto;
+@media (max-width: 480px) {
+  .checkout-header {
+    border-radius: 20px;
   }
 }
