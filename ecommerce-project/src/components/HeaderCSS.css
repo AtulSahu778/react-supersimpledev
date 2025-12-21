@@ -10,9 +10,6 @@
   max-width: 1400px;
   width: calc(100% - clamp(24px, 5vw, 40px));
   margin: clamp(10px, 2.5vh, 20px) auto 0;
-  left: 50%;
-  transform: translateX(-50%);
-  right: auto;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   display: flex;
@@ -22,17 +19,22 @@
 
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   height: 70px;
   z-index: 1000;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 768px) {
   .header {
     left: 0;
+    right: 0;
     transform: none;
     margin-left: clamp(12px, 3vw, 16px);
     margin-right: clamp(12px, 3vw, 16px);
-    width: calc(100% - clamp(24px, 6vw, 32px));
+    width: auto;
   }
 }
 
