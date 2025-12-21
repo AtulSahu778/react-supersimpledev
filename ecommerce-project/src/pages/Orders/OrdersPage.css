@@ -7,6 +7,13 @@
   margin-right: auto;
 }
 
+@media (min-width: 769px) {
+  .orders-page {
+    background: #FAFAFA;
+    padding: clamp(24px, 4vw, 40px);
+  }
+}
+
 .orders-page .page-title {
   font-weight: 700;
   font-size: clamp(24px, 6vw, 32px);
@@ -23,21 +30,34 @@
 }
 
 .orders-page .order-container {
-  background: var(--bg-card);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 16px;
+  box-shadow: none;
   overflow: hidden;
 }
 
+@media (min-width: 769px) {
+  .orders-page .order-container {
+    border-radius: 20px;
+  }
+}
+
 .orders-page .order-header {
-  background: linear-gradient(135deg, rgba(25, 155, 226, 0.08), rgba(25, 155, 226, 0.03));
+  background: #F8F8F8;
   border: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: clamp(16px, 3vw, 24px) clamp(20px, 4vw, 28px);
-  border-bottom: 1px solid var(--divider);
+  border-bottom: 1px solid #EAEAEA;
   gap: clamp(12px, 2vw, 16px);
+}
+
+@media (min-width: 769px) {
+  .orders-page .order-header {
+    padding: 24px 28px;
+  }
 }
 
 .orders-page .order-header-left-section {
@@ -120,13 +140,21 @@
 
 .orders-page .product-image-container {
   text-align: center;
-  background: var(--bg-app);
+  background: #F8F8F8;
   border-radius: clamp(12px, 2vw, 16px);
   padding: clamp(8px, 2vw, 12px);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: clamp(100px, 20vw, 120px);
+  border: 1px solid #EAEAEA;
+}
+
+@media (min-width: 769px) {
+  .orders-page .product-image-container {
+    border-radius: 16px;
+    padding: 12px;
+  }
 }
 
 .orders-page .product-image-container img {

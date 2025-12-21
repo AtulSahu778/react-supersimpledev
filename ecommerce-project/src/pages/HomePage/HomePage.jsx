@@ -22,14 +22,6 @@ function HomePage({cart , loadCart}) {
     getHomeData();
   }, [search]);
 
-//   window.axios = axios;
-//   const resetEverything = async () => {
-//     const response = await axios.post('/api/reset');
-//    
-//   }
-  
-//  resetEverything(); This shows how to reset the backend to default values.
-
   return (
     <>
     <title>UrbanCart - Ecommerce App</title> 
@@ -37,7 +29,9 @@ function HomePage({cart , loadCart}) {
     <Header cart={cart} isHomePage={true}/>
 
     <div className="home-page">
-      <ProductsGrid products={products} loadCart={loadCart}/>
+      <section className="products-section">
+        <ProductsGrid products={products} loadCart={loadCart}/>
+      </section>
     </div>
     </>
   )
