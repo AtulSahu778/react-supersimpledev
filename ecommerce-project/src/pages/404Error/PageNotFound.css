@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #FAFAFA;
+  background: var(--bg-app);
   padding: clamp(16px, 3vw, 24px);
 }
 
@@ -12,7 +12,7 @@
   max-width: 500px;
   width: 100%;
   padding: clamp(32px, 6vw, 48px) clamp(24px, 5vw, 32px);
-  background: #FFFFFF;
+  background: var(--bg-card);
   border: 1px solid #EAEAEA;
   border-radius: 20px;
   box-shadow: none;

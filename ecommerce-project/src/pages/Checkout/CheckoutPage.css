@@ -9,7 +9,7 @@
 
 @media (min-width: 769px) {
   .checkout-page {
-    background: #FAFAFA;
+    background: var(--bg-app);
     padding: clamp(24px, 4vw, 40px);
     margin-top: clamp(100px, 15vh, 110px);
   }
@@ -44,7 +44,7 @@
 
 .checkout-page .cart-item-container,
 .checkout-page .payment-summary {
-  background: #FFFFFF;
+  background: var(--bg-card);
   border: 1px solid #EAEAEA;
   border-radius: 16px;
   padding: clamp(16px, 4vw, 24px);
