@@ -6,14 +6,12 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const search = req.query.search;
 
-  let products;
-  if (search) {
-    products = await Product.findAll();
+  const products = await Product.findAll();
 
-    // Filter products by case-insensitive search on name or keywords
+  if (search) {
     const lowerCaseSearch = search.toLowerCase();
 
-    products = products.filter(product => {
+    const filteredProducts = products.filter(product => {
       const nameMatch = product.name.toLowerCase().includes(lowerCaseSearch);
 
       const keywordsMatch = product.keywords.some(keyword => keyword.toLowerCase().includes(lowerCaseSearch));
@@ -21,11 +19,10 @@ router.get('/', async (req, res) => {
       return nameMatch || keywordsMatch;
     });
 
+    res.json(filteredProducts);
   } else {
-    products = await Product.findAll();
+    res.json(products);
   }
-
-  res.json(products);
 });
 
 export default router;

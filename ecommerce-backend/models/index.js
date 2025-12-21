@@ -29,7 +29,6 @@ if (isUsingRDS) {
     logging: false
   });
 
-  // Save database to file after write operations.
   sequelize.addHook('afterCreate', saveDatabaseToFile);
   sequelize.addHook('afterDestroy', saveDatabaseToFile);
   sequelize.addHook('afterUpdate', saveDatabaseToFile);

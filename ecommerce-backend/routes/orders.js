@@ -8,22 +8,31 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   const expand = req.query.expand;
-  let orders = await Order.unscoped().findAll({ order: [['orderTimeMs', 'DESC']] }); // Sort by most recent
+  let orders = await Order.unscoped().findAll({ order: [['orderTimeMs', 'DESC']] });
 
   if (expand === 'products') {
-    orders = await Promise.all(orders.map(async (order) => {
-      const products = await Promise.all(order.products.map(async (product) => {
-        const productDetails = await Product.findByPk(product.productId);
-        return {
-          ...product,
-          product: productDetails
-        };
+    const allProductIds = new Set();
+    orders.forEach(order => {
+      order.products.forEach(product => {
+        allProductIds.add(product.productId);
+      });
+    });
+    
+    const products = await Product.findAll({
+      where: { id: [...allProductIds] }
+    });
+    const productMap = new Map(products.map(p => [p.id, p]));
+    
+    orders = orders.map(order => {
+      const expandedProducts = order.products.map(product => ({
+        ...product,
+        product: productMap.get(product.productId) || null
       }));
       return {
         ...order.toJSON(),
-        products
+        products: expandedProducts
       };
-    }));
+    });
   }
 
   res.json(orders);
@@ -80,16 +89,19 @@ router.get('/:orderId', async (req, res) => {
   }
 
   if (expand === 'products') {
-    const products = await Promise.all(order.products.map(async (product) => {
-      const productDetails = await Product.findByPk(product.productId);
-      return {
-        ...product,
-        product: productDetails
-      };
+    const productIds = order.products.map(product => product.productId);
+    const products = await Product.findAll({
+      where: { id: productIds }
+    });
+    const productMap = new Map(products.map(p => [p.id, p]));
+    
+    const expandedProducts = order.products.map(product => ({
+      ...product,
+      product: productMap.get(product.productId) || null
     }));
     order = {
       ...order.toJSON(),
-      products
+      products: expandedProducts
     };
   }
 

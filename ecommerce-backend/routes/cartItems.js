@@ -10,12 +10,14 @@ router.get('/', async (req, res) => {
   let cartItems = await CartItem.findAll();
 
   if (expand === 'product') {
-    cartItems = await Promise.all(cartItems.map(async (item) => {
-      const product = await Product.findByPk(item.productId);
-      return {
-        ...item.toJSON(),
-        product
-      };
+    const productIds = [...new Set(cartItems.map(item => item.productId))];
+    const products = await Product.findAll({
+      where: { id: productIds }
+    });
+    const productMap = new Map(products.map(p => [p.id, p]));
+    cartItems = cartItems.map(item => ({
+      ...item.toJSON(),
+      product: productMap.get(item.productId) || null
     }));
   }
 
