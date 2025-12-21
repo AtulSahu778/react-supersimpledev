@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { sequelize } from './models/index.js';
+import { sequelize, saveDatabaseToFile } from './models/index.js';
 import productRoutes from './routes/products.js';
 import deliveryOptionRoutes from './routes/deliveryOptions.js';
 import cartItemRoutes from './routes/cartItems.js';
@@ -92,6 +92,31 @@ if (productCount === 0) {
   console.log('Default data added to the database.');
 }
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+// Graceful shutdown - save database before exiting
+const isUsingRDS = process.env.RDS_HOSTNAME && process.env.RDS_USERNAME && process.env.RDS_PASSWORD;
+
+process.on('SIGTERM', async () => {
+  console.log('SIGTERM received, shutting down gracefully...');
+  if (!isUsingRDS) {
+    await saveDatabaseToFile();
+  }
+  server.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', async () => {
+  console.log('SIGINT received, shutting down gracefully...');
+  if (!isUsingRDS) {
+    await saveDatabaseToFile();
+  }
+  server.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
 });

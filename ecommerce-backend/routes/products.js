@@ -1,26 +1,35 @@
 import express from 'express';
 import { Product } from '../models/Product.js';
+import { Op } from 'sequelize';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
   const search = req.query.search;
 
-  const products = await Product.findAll();
-
   if (search) {
-    const lowerCaseSearch = search.toLowerCase();
-
-    const filteredProducts = products.filter(product => {
-      const nameMatch = product.name.toLowerCase().includes(lowerCaseSearch);
-
-      const keywordsMatch = product.keywords.some(keyword => keyword.toLowerCase().includes(lowerCaseSearch));
-
-      return nameMatch || keywordsMatch;
+    // Use database query for efficient searching
+    // Search in name (case-insensitive) and keywords (stored as comma-separated string)
+    const products = await Product.findAll({
+      where: {
+        [Op.or]: [
+          {
+            name: {
+              [Op.like]: `%${search}%`
+            }
+          },
+          {
+            keywords: {
+              [Op.like]: `%${search}%`
+            }
+          }
+        ]
+      }
     });
 
-    res.json(filteredProducts);
+    res.json(products);
   } else {
+    const products = await Product.findAll();
     res.json(products);
   }
 });
