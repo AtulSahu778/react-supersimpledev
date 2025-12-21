@@ -27,21 +27,29 @@ function DeliveryOptions({ cartItem , deliveryOptions, loadCart}) {
                         loadCart();
                     }
 
+                  const deliveryDate = dayjs().add(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D');
+                  const optionLabel = `${deliveryDate} - ${priceString}`;
+                  
                   return (
                     <div key={deliveryOption.id}  className="delivery-option" onClick={updateDeliveryOption}>
-                  <input type="radio" 
-                  checked={deliveryOption.id === cartItem.deliveryOptionId}
-                  onChange={()=>{}}
+                  <input 
+                    type="radio" 
+                    checked={deliveryOption.id === cartItem.deliveryOptionId}
+                    onChange={()=>{}}
                     className="-input"
-                    name={`delivery-option-${cartItem.productId}`} />
-                  <div>
+                    id={`delivery-option-${cartItem.productId}-${deliveryOption.id}`}
+                    name={`delivery-option-${cartItem.productId}`}
+                    aria-label={optionLabel} />
+                  <label 
+                    htmlFor={`delivery-option-${cartItem.productId}-${deliveryOption.id}`}
+                    style={{ cursor: 'pointer', flex: 1 }}>
                     <div className="delivery-option-date">
-                    {dayjs().add(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
+                    {deliveryDate}
                     </div>
                     <div className="delivery-option-price">
                     {priceString}
                     </div>
-                  </div>
+                  </label>
                 </div>
                   );
                 })}

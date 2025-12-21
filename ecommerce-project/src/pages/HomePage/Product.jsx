@@ -81,7 +81,7 @@ function Product({ product, loadCart }) {
                 e.stopPropagation();
                 toggleWishlist();
               }}
-              aria-label="Add to wishlist"
+              aria-label={isWishlisted ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
             >
               <svg 
                 className={`wishlist-icon ${isWishlisted ? 'active' : ''}`}
@@ -97,7 +97,8 @@ function Product({ product, loadCart }) {
             </button>
             <img className="product-image"
               data-testId = "product-image"
-              src={product.image} />
+              src={product.image}
+              alt={product.name} />
           </div>
 
           <div className="product-name limit-text-to-2-lines">
@@ -107,7 +108,8 @@ function Product({ product, loadCart }) {
           <div className="product-rating-container">
             <img className="product-rating-stars"
               data-testId = "product-rating-stars-image"
-              src={`images/ratings/rating-${product.rating.stars * 10}.png`} />
+              src={`images/ratings/rating-${product.rating.stars * 10}.png`}
+              alt={`${product.rating.stars} star rating`} />
             <div className="product-rating-count link-primary"
               
             >
@@ -125,9 +127,12 @@ function Product({ product, loadCart }) {
           </div>
 
           <div className="product-quantity-container">
+            <label htmlFor={`quantity-select-${product.id}`} className="sr-only">Quantity</label>
             <select  
+                id={`quantity-select-${product.id}`}
                 value={quantity} 
-                onChange={selectQuantity}>
+                onChange={selectQuantity}
+                aria-label={`Select quantity for ${product.name}`}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -147,8 +152,10 @@ function Product({ product, loadCart }) {
                style={{
                 opacity: added ? 1 : 0
                }}
+               role="status"
+               aria-live="polite"
           >
-            <img src="images/icons/checkmark.png" />
+            <img src="images/icons/checkmark.png" alt="" />
             Added
           </div>
 

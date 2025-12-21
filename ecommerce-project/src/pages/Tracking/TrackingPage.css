@@ -68,10 +68,8 @@
 }
 
 .tracking-page .product-image {
-  max-width: min(180px, 50vw);
-  max-height: min(180px, 50vw);
-  width: 100%;
-  height: auto;
+  width: min(180px, 50vw);
+  aspect-ratio: 1 / 1;
   margin-top: clamp(16px, 3vh, 24px);
   margin-bottom: clamp(32px, 6vh, 48px);
   border-radius: 16px;
@@ -79,6 +77,7 @@
   border: 1px solid #EAEAEA;
   padding: clamp(12px, 3vw, 16px);
   object-fit: contain;
+  object-position: center;
 }
 
 @media (min-width: 769px) {

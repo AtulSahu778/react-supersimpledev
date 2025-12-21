@@ -51,11 +51,13 @@ function Header({cart = [], isHomePage = false, isTrackingPage = false}) {
    <>
    <div className={`header ${isHomePage ? 'header-homepage' : ''} ${isTrackingPage ? 'header-tracking' : ''}`}>
       <div className="left-section">
-        <NavLink to ="/" className="header-link">
+        <NavLink to ="/" className="header-link" aria-label="Home">
           <img className="logo"
-            src="images/urbancart.png" />
+            src="images/urbancart.png" 
+            alt="UrbanCart logo" />
           <img className="mobile-logo"
-            src="images/urbancart.png" />
+            src="images/urbancart.png" 
+            alt="UrbanCart logo" />
         </NavLink>
       </div>
 
@@ -70,8 +72,8 @@ function Header({cart = [], isHomePage = false, isTrackingPage = false}) {
             onKeyDown={handleKeyDown}
           />
 
-          <button className="search-button" onClick={searchBar}>
-            <img className="search-icon" src="images/icons/search-icon.png" />
+          <button className="search-button" onClick={searchBar} aria-label="Search">
+            <img className="search-icon" src="images/icons/search-icon.png" alt="" />
           </button>
         </div>
       )}

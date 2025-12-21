@@ -78,6 +78,7 @@ function TrackOrders({ cart }) {
             <img
               className="product-image"
               src={orderProduct.product.image}
+              alt={orderProduct.name}
             />
 
              <div className="progress-labels-container">

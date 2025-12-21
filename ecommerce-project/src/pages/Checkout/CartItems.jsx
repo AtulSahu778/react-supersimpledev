@@ -47,7 +47,8 @@ function CartItems({deliveryOptions, cartItem, loadCart}) {
   return (
     <div className="cart-item-details-grid">
               <img className="product-image"
-                src={cartItem.product.image} />
+                src={cartItem.product.image}
+                alt={cartItem.product.name} />
 
               <div className="cart-item-details">
                 <div className="product-name">

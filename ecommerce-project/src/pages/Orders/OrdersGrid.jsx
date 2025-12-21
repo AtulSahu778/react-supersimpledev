@@ -1,12 +1,12 @@
 import  {React,  Fragment } from 'react'
 import dayjs from 'dayjs';
-import { Link } from 'react-router';
+import { useNavigate } from 'react-router';
 import OrdersHeader from './OrdersHeader';
 import axios from 'axios';
 
 function OrdersGrid({orders ,loadCart}) {
 
-
+  const navigate = useNavigate();
 
   return (
     <div className="orders-grid">
@@ -31,7 +31,7 @@ function OrdersGrid({orders ,loadCart}) {
               return (
                 <Fragment key={orderProduct.product.id}>
                   <div className="product-image-container">
-              <img src={orderProduct.product.image} />
+              <img src={orderProduct.product.image} alt={orderProduct.product.name} />
             </div>
 
             <div className="product-details">
@@ -44,18 +44,19 @@ function OrdersGrid({orders ,loadCart}) {
               <div className="product-quantity">
                 Quantity: {orderProduct.quantity}
               </div>
-              <button className="buy-again-button button-primary" onClick={addToCart}>
-                <img className="buy-again-icon" src="images/icons/buy-again.png" />
+              <button className="buy-again-button button-primary" onClick={addToCart} aria-label={`Add ${orderProduct.product.name} to cart`}>
+                <img className="buy-again-icon" src="images/icons/buy-again.png" alt="" />
                 <span className="buy-again-message">Add to Cart</span>
               </button>
             </div>
 
             <div className="product-actions">
-              <Link to={`/tracking/${order.id}`}>
-                <button className="track-package-button button-secondary">
-                  Track package
-                </button>
-              </Link>
+              <button 
+                className="track-package-button button-secondary"
+                onClick={() => navigate(`/tracking/${order.id}`)}
+                aria-label="Track package">
+                Track package
+              </button>
             </div>
                    
                 </Fragment>
