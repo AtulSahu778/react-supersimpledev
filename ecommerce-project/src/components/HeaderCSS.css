@@ -202,8 +202,9 @@
 .header .search-icon {
   height: 18px;
   width: 18px;
-  filter: brightness(0) saturate(100%);
+  color: var(--text-secondary);
   opacity: 0.5;
+  flex-shrink: 0;
 }
 
 @media (max-width: 480px) {
